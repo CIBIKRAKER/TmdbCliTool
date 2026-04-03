@@ -19,8 +19,9 @@ import static com.sun.management.HotSpotDiagnosticMXBean.ThreadDumpFormat.JSON;
 public class TmdbAPI {
     private static final String API_URL = "https://api.themoviedb.org/3";
 
-    public List<Object> fetchPopularMovies(String urlParameter) throws IOException, InterruptedException {
-        List<Object> list = new ArrayList<>();
+
+    public List<String> fetchPopularMovies(String urlParameter) throws IOException, InterruptedException {
+        List<String> list = new ArrayList<>();
 
         HttpClient client = HttpClient.newHttpClient();
 
@@ -45,5 +46,14 @@ public class TmdbAPI {
         return list;
     }
 
+    public List<String> getMoviesByType(String type) throws IOException, InterruptedException {
+        return switch (type) {
+            case "popular" -> fetchPopularMovies("popular");
+            case "top" -> fetchPopularMovies("top_rated");
+            case "upcoming" -> fetchPopularMovies("upcoming");
+            case "playing" -> fetchPopularMovies("now_playing");
+            default -> throw new RuntimeException("Invalid type: " + type);
+        };
+    }
 
 }
