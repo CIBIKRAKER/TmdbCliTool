@@ -40,12 +40,12 @@ apiKey=your_tmdb_api_key_here
 
 ### 4. Run the tool
 ```bash
-java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar --type popular
+java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar -type popular
 ```
 
 ## Usage
 ```bash
-java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar --type [popular|top|upcoming|playing]
+java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar -type [popular|top|upcoming|playing]
 ```
 
 ### Options
@@ -57,16 +57,16 @@ java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar --type [popular|top|upcoming|p
 ### Examples
 ```bash
 # Popular movies
-java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar --type popular
+java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar -type popular
 
 # Top rated movies
-java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar --type top
+java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar -type top
 
 # Upcoming movies
-java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar --type upcoming
+java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar -type upcoming
 
 # Now playing movies
-java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar --type playing
+java -jar build/libs/TmdbCliTool-1.0-SNAPSHOT.jar -type playing
 ```
 
 ## Movie Types
