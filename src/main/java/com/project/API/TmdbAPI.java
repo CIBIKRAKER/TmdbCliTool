@@ -25,18 +25,23 @@ public class TmdbAPI {
 
         HttpClient client = HttpClient.newHttpClient();
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL + String.format("/movie/%s?api_key=%s",urlParameter,Config.getApiKey())))
-                .GET()
-                .header("Accept", "application/json")
-                .build();
+        HttpResponse<String> response = null;
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(API_URL + String.format("/movie/%s?api_key=%s", urlParameter, Config.getApiKey())))
+                    .GET()
+                    .header("Accept", "application/json")
+                    .build();
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         JSONObject jsonObject = new JSONObject(response.body());
         JSONArray results = jsonObject.getJSONArray("results");
 
-        for(Object o : results) {
+        for (Object o : results) {
             JSONObject movie = (JSONObject) o;
             String title = movie.getString("title");
             Double rating = movie.getDouble("vote_average");
